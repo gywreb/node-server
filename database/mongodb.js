@@ -2,8 +2,7 @@ const mongodb = require("mongodb");
 const MongoClient = mongodb.MongoClient;
 
 // const localUri = "mongodb://localhost:27017";
-const uri =
-  "mongodb+srv://gywreb:pdCDcWjNUioIOuzV@cluster0.t9dae.mongodb.net/node-course?retryWrites=true&w=majority";
+const uri = process.env.MONGODB_URI;
 const DATABASE = "node-course";
 
 // let db;
