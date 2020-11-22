@@ -35,6 +35,4 @@ const dbConnector = async () => {
   }
 };
 
-dbConnector();
-
 module.exports = dbConnector;
