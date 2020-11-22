@@ -1,7 +1,8 @@
 const Joi = require("joi");
+const { ObjectId } = require("mongodb");
 const dbConnector = require("../mongodb");
 
-const collection = "users";
+const collection = "user";
 
 class User {
   constructor(email, password) {
@@ -16,6 +17,10 @@ class User {
     const db = await dbConnector();
     return db.collection(collection).find().toArray();
   }
+  static async getUserById(id) {
+    const db = await dbConnector();
+    return db.collection(collection).findOne(ObjectId(id));
+  }
   static async getUserByEmail(email) {
     const db = await dbConnector();
     return db.collection(collection).findOne({ email });
@@ -24,8 +29,14 @@ class User {
     const db = await dbConnector();
     return db.collection(collection).deleteMany({});
   }
-  // deleteUserByEmail(email)
-  // deleteUserById(id)
+  static async deleteUserByEmail(email) {
+    const db = await dbConnector();
+    return db.collection(collection).deleteOne({ email });
+  }
+  static async deleteUserById(id) {
+    const db = await dbConnector();
+    return db.collection(collection).deleteOne({ _id: ObjectId(id) });
+  }
 }
 
 const userSchema = Joi.object({
