@@ -1,8 +1,7 @@
 const mongodb = require("mongodb");
 const MongoClient = mongodb.MongoClient;
 
-// const localUri = "mongodb://localhost:27017";
-const uri = process.env.MONGODB_URI;
+const uri = process.env.MONGODB_URI || "mongodb://localhost:27017";
 const DATABASE = "node-course";
 
 // let db;

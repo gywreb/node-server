@@ -1,6 +1,5 @@
 const express = require("express");
 const { Article } = require("../database/models/article");
-const { User } = require("../database/models/user");
 const { articleValidation } = require("../middleware/article");
 const router = express.Router();
 
